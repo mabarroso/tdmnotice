@@ -1,6 +1,8 @@
 namespace :cron do
   desc "Notify 5 followers"
   task :notify => :environment do
-    puts 'hola'
+    require 'cron_tasks'
+    include Cron
+		Cron::Tasks.notify
   end
 end
