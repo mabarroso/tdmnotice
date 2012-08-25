@@ -15,10 +15,7 @@ module Cron
       while cursor != 0 do
         followers = Twitter.follower_ids(:screen_name,:cursor=>cursor)
         followers.ids.each do |fid|
-          if (max > 0 ) && Follower.not_exists?(fid)
-            import_user_data fid
-            max-= 1
-          end
+          max-= 1 if (max > 0) && import_user_data(fid)
           cursor = 0 if max < 1
         end
         cursor = followers.next_cursor
@@ -27,10 +24,12 @@ module Cron
 
     private
     def import_user_data id
+      return false unless Follower.not_exists?(id)
       f = Twitter.user(id)
       Follower.create  id: id, screen_name: f.screen_name,
                        utc_offset: f.utc_offset, time_zone: f.time_zone, lang: f.lang,
                        following: f.following, follow_request_sent: f.follow_request_sent
+      return true
     end
   end
 end
