@@ -8,7 +8,6 @@ class CreateFollowers < ActiveRecord::Migration
       t.string :lang
       t.boolean :following
       t.boolean :follow_request_sent
-      t.boolean :follow
       t.datetime :notified_at
 
       t.timestamps

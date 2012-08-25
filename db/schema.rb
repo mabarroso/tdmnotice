@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20120820221207) do
     t.string   "lang"
     t.boolean  "following"
     t.boolean  "follow_request_sent"
-    t.boolean  "follow"
     t.datetime "notified_at"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false

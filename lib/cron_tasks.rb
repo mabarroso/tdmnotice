@@ -13,11 +13,13 @@ module Cron
       cursor = "-1"
       # Loop through all pages
       while cursor != 0 do
-        followers = Twitter.follower_ids(:screen_name, :cursor=>cursor)
+        followers = Twitter.follower_ids(:screen_name,:cursor=>cursor)
         followers.ids.each do |fid|
           if (max > 0 ) && Follower.not_exists?(fid)
             f = Twitter.user(fid)
-            Follower.create  id: fid, screen_name: f.screen_name
+            Follower.create  id: fid, screen_name: f.screen_name,
+                             utc_offset: f.utc_offset, time_zone: f.time_zone, lang: f.lang,
+                             following: f.following, follow_request_sent: f.follow_request_sent
             max-= 1
           end
           cursor = 0 if max < 1
