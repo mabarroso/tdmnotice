@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+followers = Follower.create([{ id: 1, screen_name: 'A' }, { id: 2, screen_name: 'B' }])
