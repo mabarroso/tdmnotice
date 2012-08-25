@@ -15,10 +15,15 @@ ActiveRecord::Schema.define(:version => 20120820221207) do
 
   create_table "followers", :force => true do |t|
     t.string   "screen_name"
+    t.integer  "utc_offset"
+    t.string   "time_zone"
+    t.string   "lang"
+    t.boolean  "following"
+    t.boolean  "follow_request_sent"
     t.boolean  "follow"
     t.datetime "notified_at"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
 end

@@ -1,5 +1,5 @@
 class Follower < ActiveRecord::Base
-  attr_accessible :follow, :id, :notified_at, :screen_name
+  attr_accessible :follow, :follow_request_sent, :following, :id, :lang, :notified_at, :screen_name, :time_zone, :utc_offset
 
   def self.not_exists?(ids)
     self.find(ids)
@@ -7,5 +7,4 @@ class Follower < ActiveRecord::Base
   rescue
     true
   end
-
 end
