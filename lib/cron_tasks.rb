@@ -2,8 +2,8 @@
 module Cron
   class Tasks
 	  def self.notify
-	    puts 'not implemented'
 	    followers = Cron::Followers.new
+	    puts 'import new followers'
 	    followers.import_new
 	  end
   end
