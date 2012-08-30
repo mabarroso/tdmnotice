@@ -9,7 +9,7 @@ module Cron
   end
 
   class Followers
-    def import_new max = 5
+    def import_new max = 20
       cursor = "-1"
       # Loop through all pages
       while cursor != 0 do
